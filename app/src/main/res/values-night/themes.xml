@@ -3,7 +3,7 @@
     <style name="Theme.PasswordGenerator" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@null</item>
-        <item name="colorPrimaryVariant">@color/purple_700</item>
+        <item name="colorPrimaryVariant">#04102c</item>
         <item name="colorOnPrimary">@null</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/teal_200</item>
