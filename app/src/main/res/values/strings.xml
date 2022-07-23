@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">PasswordGenerator</string>
+    <string name="app_name">Password Generator</string>
     <string name="generated_password">Generated Password</string>
     <string name="generate_password">Generate Password</string>
     <string name="password_value">DeuFE1?49tw</string>
