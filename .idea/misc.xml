@@ -3,10 +3,16 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.121" />
+        <entry key="app/src/main/res/drawable/button_bg.xml" value="0.121" />
         <entry key="app/src/main/res/drawable/copy.xml" value="0.193" />
+        <entry key="app/src/main/res/drawable/copy_button.xml" value="0.121" />
         <entry key="app/src/main/res/drawable/gradient.xml" value="0.193" />
         <entry key="app/src/main/res/drawable/gradient_button.xml" value="0.193" />
         <entry key="app/src/main/res/drawable/head.xml" value="0.193" />
+        <entry key="app/src/main/res/drawable/header.xml" value="0.121" />
+        <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.121" />
+        <entry key="app/src/main/res/drawable/new_thumb.xml" value="0.121" />
         <entry key="app/src/main/res/drawable/newthumb.xml" value="0.193" />
         <entry key="app/src/main/res/drawable/newtrack.xml" value="0.193" />
         <entry key="app/src/main/res/drawable/radius.xml" value="0.193" />
