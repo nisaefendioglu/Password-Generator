@@ -7,30 +7,21 @@
     android:background="#04102c"
     tools:context=".MainActivity">
 
-    <pl.droidsonroids.gif.GifImageView
-        android:id="@+id/gifImageView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:src="@drawable/key"
-        android:visibility="gone"
-        app:layout_constraintBottom_toTopOf="parent"
-        app:layout_constraintEnd_toStartOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <TextView
         android:id="@+id/textView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="48dp"
         android:background="@drawable/header"
         android:gravity="center"
         android:text="@string/generate_password"
         android:textColor="@color/white"
         android:textSize="30sp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/textView2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/gifImageView"
+        app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints" />
 
     <TextView
@@ -48,14 +39,15 @@
 
     <TextView
         android:id="@+id/textView2"
-        android:layout_width="377dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_marginStart="17dp"
+        android:layout_marginEnd="17dp"
+        android:layout_marginBottom="8dp"
         android:text="@string/generated_password"
         android:textColor="#B3AAAA"
-        android:layout_marginStart="18dp"
+        app:layout_constraintBottom_toTopOf="@+id/copy"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.529"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
@@ -76,11 +68,9 @@
         android:id="@+id/copy"
         android:layout_width="37dp"
         android:layout_height="38dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
         android:background="@drawable/copy_button"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.472"
-        app:layout_constraintStart_toEndOf="@+id/password"
         app:layout_constraintTop_toBottomOf="@+id/textView2"
         tools:ignore="ContentDescription" />
 
@@ -108,27 +98,29 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
+        android:layout_marginTop="5dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="13dp"
         android:text="@string/customize_your_password"
         android:textColor="#B3AAAA"
         app:layout_constraintBottom_toTopOf="@+id/upperSwitch"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/password" />
 
     <Switch
         android:id="@+id/upperSwitch"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="55dp"
+        android:layout_marginTop="8dp"
         android:text="Upper Case   "
         android:textColor="@color/white"
         android:textSize="18sp"
         android:thumbTint="@drawable/new_thumb"
         android:trackTint="@drawable/new_track"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/password"
+        app:layout_constraintTop_toBottomOf="@+id/textView7"
         tools:ignore="UseSwitchCompatOrMaterialXml" />
 
     <Switch
