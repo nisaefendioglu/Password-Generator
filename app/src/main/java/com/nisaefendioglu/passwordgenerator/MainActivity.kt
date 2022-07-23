@@ -1,16 +1,24 @@
 package com.nisaefendioglu.passwordgenerator
 
-import androidx.appcompat.app.AppCompatActivity
+import android.content.ClipData
+import android.content.ClipboardManager
+import android.content.Context
 import android.os.Bundle
-import androidx.activity.viewModels
+import android.util.Log
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import com.nisaefendioglu.passwordgenerator.api.ApiClient
+import com.nisaefendioglu.passwordgenerator.api.ApiService
 import com.nisaefendioglu.passwordgenerator.databinding.ActivityMainBinding
-import com.nisaefendioglu.passwordgenerator.viewmodel.PasswordGeneratorViewModel
-import dagger.hilt.android.AndroidEntryPoint
+import com.nisaefendioglu.passwordgenerator.model.PasswordResponse
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import java.util.*
 
-@AndroidEntryPoint
+
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
-    private val viewModel : PasswordGeneratorViewModel by viewModels()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -18,10 +26,58 @@ class MainActivity : AppCompatActivity() {
 
         binding.generatePassword.apply {
             setOnClickListener {
-             //   binding.password.text = viewModel.responsePassword.toString()
+                generatePassword()
             }
         }
 
+        binding.copy.setOnClickListener {
+            val clipboard: ClipboardManager =
+                getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+            val clip = ClipData.newPlainText("Password", binding.password.text)
+            clipboard.setPrimaryClip(clip)
+
+            Toast.makeText(this, "Password Copied \uD83D\uDD10", Toast.LENGTH_SHORT).show()
+
+        }
+    }
+
+    private fun generatePassword() {
+        val clientRest: ApiService = ApiClient.create(ApiService::class.java)
+        val callResponse: Call<PasswordResponse> = clientRest.getPasswordGenerator()
+        callResponse.enqueue(object : Callback<PasswordResponse?> {
+            override fun onResponse(
+                call: Call<PasswordResponse?>,
+                response: Response<PasswordResponse?>
+            ) {
+                val passwordResponse: PasswordResponse? = response.body()
+                if (passwordResponse != null) {
+                    val myPassword = passwordResponse.char.toString().replace("[", "").replace(
+                        "]",
+                        ""
+                    )
+
+                    binding.password.text = myPassword
+
+                    if (binding.upperSwitch.isChecked) {
+                        binding.password.text = myPassword
+                            .uppercase(Locale.getDefault())
+                        binding.lowerSwitch.isChecked = false
+                    }
+
+                    if (binding.lowerSwitch.isChecked) {
+                        binding.password.text = myPassword
+                            .lowercase(Locale.getDefault())
+                        binding.upperSwitch.isChecked = false
+
+                    }
+                }
+            }
+
+            override fun onFailure(call: Call<PasswordResponse?>, t: Throwable) {
+                Log.d("Password Response Fail", t.toString())
+            }
+
+        })
     }
 
 }
