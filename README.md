@@ -20,4 +20,3 @@ You can visit the link to access the privacy policy of the application. - [Priva
 ## License
 
 Licensed under the MIT license, see [LICENSE](LICENSE) for details.
-
