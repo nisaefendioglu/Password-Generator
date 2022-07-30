@@ -38,34 +38,15 @@ class MainActivity : AppCompatActivity() {
                 setOnClickListener {
                     when {
                         binding.upperSwitch.isChecked -> {
-                            viewModel.onTriggerEvent(
-                                MainViewEvent.GeneratePassword(
-                                    viewModel.uiState.value.copy(
-                                        isUpperCase = binding.upperSwitch.isChecked
-                                    )
-                                )
-                            )
+                            setCustomizePassword(isUpperCase = true, isLowerCase = false)
                             binding.lowerSwitch.isChecked = false
                         }
                         binding.lowerSwitch.isChecked -> {
-                            viewModel.onTriggerEvent(
-                                MainViewEvent.GeneratePassword(
-                                    viewModel.uiState.value.copy(
-                                        isLowerCase = binding.lowerSwitch.isChecked,
-                                    )
-                                )
-                            )
+                            setCustomizePassword(isUpperCase = false, isLowerCase = true)
                             binding.upperSwitch.isChecked = false
                         }
                         else -> {
-                            viewModel.onTriggerEvent(
-                                MainViewEvent.GeneratePassword(
-                                    viewModel.uiState.value.copy(
-                                        isUpperCase = binding.upperSwitch.isEnabled,
-                                        isLowerCase = binding.lowerSwitch.isEnabled
-                                    )
-                                )
-                            )
+                            setCustomizePassword()
                         }
                     }
                 }
@@ -84,5 +65,16 @@ class MainActivity : AppCompatActivity() {
                 ).show()
             }
         }
+    }
+
+    private fun setCustomizePassword(isUpperCase: Boolean = true, isLowerCase: Boolean = true) {
+        viewModel.onTriggerEvent(
+            MainViewEvent.GeneratePassword(
+                viewModel.uiState.value.copy(
+                    isUpperCase = isUpperCase,
+                    isLowerCase = isLowerCase
+                )
+            )
+        )
     }
 }
