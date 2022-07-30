@@ -36,14 +36,38 @@ class MainActivity : AppCompatActivity() {
         binding.apply {
             generatePassword.apply {
                 setOnClickListener {
-                    viewModel.onTriggerEvent(
-                        MainViewEvent.GeneratePassword(
-                            viewModel.uiState.value.copy(
-                                isUpperCase = binding.upperSwitch.isChecked,
-                                isLowerCase = binding.lowerSwitch.isChecked,
+                    when {
+                        binding.upperSwitch.isChecked -> {
+                            viewModel.onTriggerEvent(
+                                MainViewEvent.GeneratePassword(
+                                    viewModel.uiState.value.copy(
+                                        isUpperCase = binding.upperSwitch.isChecked
+                                    )
+                                )
                             )
-                        )
-                    )
+                            binding.lowerSwitch.isChecked = false
+                        }
+                        binding.lowerSwitch.isChecked -> {
+                            viewModel.onTriggerEvent(
+                                MainViewEvent.GeneratePassword(
+                                    viewModel.uiState.value.copy(
+                                        isLowerCase = binding.lowerSwitch.isChecked,
+                                    )
+                                )
+                            )
+                            binding.upperSwitch.isChecked = false
+                        }
+                        else -> {
+                            viewModel.onTriggerEvent(
+                                MainViewEvent.GeneratePassword(
+                                    viewModel.uiState.value.copy(
+                                        isUpperCase = binding.upperSwitch.isEnabled,
+                                        isLowerCase = binding.lowerSwitch.isEnabled
+                                    )
+                                )
+                            )
+                        }
+                    }
                 }
             }
 
