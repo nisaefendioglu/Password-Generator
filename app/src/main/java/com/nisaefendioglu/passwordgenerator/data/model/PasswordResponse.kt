@@ -1,4 +1,4 @@
-package com.nisaefendioglu.passwordgenerator.model
+package com.nisaefendioglu.passwordgenerator.data.model
 
 import com.google.gson.annotations.SerializedName
 

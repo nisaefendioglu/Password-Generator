@@ -1,4 +1,4 @@
-package com.nisaefendioglu.passwordgenerator.view
+package com.nisaefendioglu.passwordgenerator.feature.splash
 
 import android.content.Intent
 import android.os.Bundle
@@ -6,6 +6,7 @@ import android.os.Handler
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import com.nisaefendioglu.passwordgenerator.R
+import com.nisaefendioglu.passwordgenerator.feature.main.MainActivity
 
 class SplashScreen : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
