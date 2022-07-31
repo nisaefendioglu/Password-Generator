@@ -67,6 +67,10 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
     implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
     implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.5.1'
+
+    // Ads
+    implementation 'com.google.android.gms:play-services-ads:21.1.0'
+
 }
 
 // Allow references to generated code
